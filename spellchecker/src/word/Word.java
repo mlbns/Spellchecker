@@ -5,35 +5,34 @@ public class Word {
 	private String word;
 	
 	public Word() {
-		System.out.println("algo");
+		word = new String();
+		setWord("");
 	}
 
 	public Word(String w) {
-		Word word = new Word();
+		word = new String();
+		setWord(w);
 	}
 	
 	public void setWord(String w) {
-		
-		System.out.println(w);
-		
+		word = w;
 	}
 	
 	public String getWord() {
-		return word;
-		
+		return word;	
 	}
 
 	 @Override
 	 public int hashCode() {
-		return 0;
+		 
+		 return 0;
 		 
 	 }
 	 
 	 @Override
 	 public boolean equals(Object obj) {
-		return false;
+		return (this == obj);
 		 
-	 }
-	 
+	 }	 
 	 
 }
