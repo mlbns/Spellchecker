@@ -1,4 +1,6 @@
 package dictionary;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import word.*;
 
@@ -33,7 +35,14 @@ public abstract class Dictionary {
 	}
 
 	public List <String> toStringList() {
-		return null;
+		List <String> myList = new ArrayList <String>();
+
+		for (Iterator<Word> iter = mySet.iterator(); iter.hasNext();) {
+			Word elem = iter.next();
+			myList.add(elem.getWord());
+		}
+
+		return myList;
 	}
 	
 	public int size() {
