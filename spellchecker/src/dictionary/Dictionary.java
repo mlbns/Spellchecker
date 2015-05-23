@@ -6,22 +6,22 @@ import word.*;
 
 public abstract class Dictionary {
 	
-	protected WordSet mySet; 
+	protected WordSet set;
 
-	public void dictionary() {
-		mySet = new WordSet();
+	public Dictionary() {
+		this.set = new WordSet();
 	}
 
 	public void add(Word w) {
-		mySet.add(w);
+		this.set.add(w);
 	}
 
 	public boolean contains(Word w) {
-		return mySet.contains(w);
+		return this.set.contains(w);
 	}
 	
 	public void clear() {
-		mySet.clear();
+		this.set.clear();
 	}
 	
 	public void fromStringList(List <String> str) {
@@ -34,10 +34,11 @@ public abstract class Dictionary {
 		}
 	}
 
-	public List <String> toStringList() {
+	public List <String>toStringList() {
+		
 		List <String> myList = new ArrayList <String>();
 
-		for (Iterator<Word> iter = mySet.iterator(); iter.hasNext();) {
+		for (Iterator<Word> iter = this.set.iterator(); iter.hasNext();) {
 			Word elem = iter.next();
 			myList.add(elem.getWord());
 		}
@@ -46,7 +47,7 @@ public abstract class Dictionary {
 	}
 	
 	public int size() {
-		return mySet.size();
+		return this.set.size();
 	}
 
 }

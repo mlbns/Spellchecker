@@ -1,3 +1,5 @@
+import java.util.List;
+
 import word.*;
 import dictionary.*;
 
@@ -19,9 +21,7 @@ public class SpellChecker {
 
 	public static void main(String[] args) {
 
-		Word w = new Word();
-		System.out.println("lo que quieras");
-		w.setWord("algo2");
+		
 	}
 	
 	
