@@ -4,29 +4,29 @@ import java.util.*;
 
 public class WordSet {
 	
-	private Set<Word> wordSet;
+	private Set<Word> set;
 	
 	public WordSet() {
-		wordSet = new HashSet<Word>();
+		set = new HashSet<Word>();
 	}
 
 	public void add(Word w) {
-		wordSet.add(w);
+		set.add(w);
 	}
 
 	public boolean contains(Word w) {
-		return wordSet.contains(w);
+		return set.contains(w);
 	}
 	
 	public void clear() {
-		wordSet.clear();
+		set.clear();
 	}
 	
 	public Iterator<Word> iterator() {
-		return wordSet.iterator();
+		return set.iterator();
 	}
 	
 	public int size() {
-		return wordSet.size();
+		return set.size();
 	}
 }
