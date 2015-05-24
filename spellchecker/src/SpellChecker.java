@@ -1,8 +1,8 @@
-import java.util.List;
+import java.util.*;
 
 import word.*;
 import dictionary.*;
-import document.*
+import document.*;
 
 
 public class SpellChecker {
@@ -10,7 +10,40 @@ public class SpellChecker {
 	public SpellChecker() {
 	}
 	
-	public static Word consultUser(Word w, Dictionary dict, Dictionary ign) {
+	private static String scanStdin() {
+		String answer;
+
+		Scanner input = new Scanner(System.in); 
+		answer = input.next();
+		input.close();
+
+		return answer;
+	}
+	
+	public static Word consultUser(Word w, dictionary.Dictionary dict, dictionary.Dictionary ign) {
+		String str = w.getWord();
+		String answer;
+		
+		do {
+			System.out.print("Palabra no reconocida:" + str + "\n Aceptar (a) - Ignorar (i) - Reemplazar (r): ");
+			answer = scanStdin();
+		} while((answer.compareTo("a") != 0) && (answer.compareTo("i") != 0) && (answer.compareTo("r") != 0));
+		
+		if(answer.compareTo("a") == 0) {
+			dict.add(w);
+		} else if(answer.compareTo("i") != 0) {
+			ign.add(w);
+		} else {
+			System.out.print("Reemplazar por: ");
+			answer = scanStdin();
+
+			while(answer == "" && !answer.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ]+")) {
+				System.out.print("Palabra invalida. Ingrese una palabra sin simbolos: ");
+				answer = scanStdin();
+			}	
+			w.setWord(answer);
+		}
+		
 		return w;
 			
 	}
@@ -62,7 +95,4 @@ public class SpellChecker {
 		accDict.save();
 		
 	}
-	
-	
-
 }
