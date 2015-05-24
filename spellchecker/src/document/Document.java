@@ -32,29 +32,33 @@ public class Document {
 		Word w = new Word();
 		String str = new String();
 		int readCh;
-		boolean prevSym = true, haveWord = false;
+		boolean prevSym = true;
+		boolean haveWord = false;
 		char[] aux, aux1;
+		
 		
 		try {
 			
-			while((readCh = input.read()) != -1) {
+			while(!haveWord && (readCh = input.read()) != -1) {
 				
 				// imprimimos el ultimo simbolo
 				output.write(lastSym);
+				lastSym = "";
 				// tenemos palabra?
-				haveWord = !Character.isLetter(readCh) && prevSym;
-				
+				haveWord = !(Character.isLetter(readCh)) && !prevSym;
+
 				if(!Character.isLetter(readCh)) {
 					if(!haveWord) {
 						// escribir simbolo en archivo de salida
 						output.write(readCh);
 					} else {
-						// guardamos el ultimo simbolo
+						// guardamos el ultimo simbolo 
 						aux = Character.toChars(readCh);
 						lastSym = Character.toString(aux[0]);
+
 					}
 				} else {
-					// 
+					// acumulamos
 					aux1 = Character.toChars(readCh);
 					str = str + Character.toString(aux1[0]);
 				}
@@ -63,9 +67,12 @@ public class Document {
 			}
 			if(haveWord) {
 				w.setWord(str);
-			}
+			} else
+				throw new EOFException();
 
-		} catch (IOException e) {
+		} catch (EOFException e) {
+			throw new EOFException();			
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 
