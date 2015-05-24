@@ -1,7 +1,10 @@
+import java.io.EOFException;
+import java.io.IOException;
 import java.util.*;
 
 import word.*;
 import dictionary.*;
+import dictionary.Dictionary;
 import document.*;
 
 
@@ -45,16 +48,43 @@ public class SpellChecker {
 		}
 		
 		return w;
-			
+
 	}
 
 
-	public static void processDocument(String docPath, String outPath, Dictionary dict, Dictionary ign) {
+	public static void processDocument(String docPath, String outPath, dictionary.Dictionary dict, Dictionary ign) {
 		
-		Document doc = new Document(docPath, outPath);
-		
-		while(doc.getWord())
-		
+		Document doc;
+		Word w;
+
+
+		try {
+			doc = new Document(docPath, outPath);
+		} catch (IOException e2) {
+			System.out.println("No se pudo abrir los documentos");
+			return;
+		}
+
+		try {
+			while(true) {
+				w = doc.getWord();
+				if(!dict.contains(w) && !ign.contains(w)) {
+					consultUser(w, dict, ign);
+				}
+				doc.putWord(w);
+			}
+		} catch (EOFException e){
+			try {
+				doc.close();
+			} catch (IOException e1) {
+				System.out.println("Error al cerrar los documentos.");
+			}
+		}
+		catch (IOException e) {
+			System.out.println("Error al leer el documento de entrada.");
+		}
+
+
 	}
 
 	public static void main(String[] args) {
