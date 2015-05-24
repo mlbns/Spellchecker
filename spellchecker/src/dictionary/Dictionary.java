@@ -5,7 +5,7 @@ import java.util.List;
 import word.*;
 
 public abstract class Dictionary {
-	
+
 	protected WordSet set;
 
 	public Dictionary() {
