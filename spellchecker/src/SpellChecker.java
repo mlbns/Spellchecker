@@ -2,6 +2,7 @@ import java.util.List;
 
 import word.*;
 import dictionary.*;
+import document.*
 
 
 public class SpellChecker {
@@ -15,7 +16,11 @@ public class SpellChecker {
 	}
 
 
-	public static void processDocument(String str, String str2, Dictionary dict, Dictionary ign) {
+	public static void processDocument(String docPath, String outPath, Dictionary dict, Dictionary ign) {
+		
+		Document doc = new Document(docPath, outPath);
+		
+		while(doc.getWord())
 		
 	}
 
@@ -43,17 +48,17 @@ public class SpellChecker {
 		ignDict = new MemDictionary();
 
 		/* debug, mostrando diccionario ppal*/
-
 		List <String> myList = accDict.toStringList();
 		System.out.print("accdict: [ ");
 		for (String s : myList) {
 			System.out.print(" "+s);
 		}
-		System.out.print(" ]");
+		System.out.println(" ]");
 		/* fin debug */
 		
 		processDocument(args[0], "out.txt", accDict, ignDict);
 		
+
 		accDict.save();
 		
 	}
