@@ -18,7 +18,6 @@ public class FileDictionary extends Dictionary {
 	
 	public void load(String path) {
 		String line;
-		int i = 0;
 		
 		/* guardar archivo origen */
 		this.filePath = path;
