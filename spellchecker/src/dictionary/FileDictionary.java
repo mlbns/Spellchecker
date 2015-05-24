@@ -8,13 +8,16 @@ import word.*;
 import dictionary.*;
 
 public class FileDictionary extends Dictionary {
+	
+	private String filePath;  
 
 	
 	public FileDictionary() {
-
+		load("dict.txt");
 	}
 
 	public FileDictionary(String str) {
+
 		load(str);
 	}
 	
@@ -42,6 +45,7 @@ public class FileDictionary extends Dictionary {
 	}
 	
 	public void save() {
+		save(this.filePath);
 	}
 
 	public void save(String str) {

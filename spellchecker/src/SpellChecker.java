@@ -50,7 +50,11 @@ public class SpellChecker {
 			System.out.print(" "+s);
 		}
 		System.out.print(" ]");
-		/* debug */
+		/* fin debug */
+		
+		processDocument(args[0], "out.txt", accDict, ignDict);
+		
+		accDict.save();
 		
 	}
 	
