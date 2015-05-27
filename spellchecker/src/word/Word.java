@@ -1,26 +1,47 @@
 package word;
 
+/**
+ * Word: Envoltorio de String, como formato de palabra 
+ * 
+ *  @autor Bonader, Nicolás - neb0113@famaf.unc.edu.ar
+ *  @autor Bonias, Melisa - mel.bonias@gmail.com
+ *
+ */
 public class Word {
 
 	private String word;
 	
 	public Word() {
-		word = new String();
 	}
 
+	/**
+	 * Constructor, inicializa la palabra
+	 * @param w Palabra con la cual inicializar el envoltorio
+	 */
 	public Word(String w) {
 		word = new String();
 		setWord(w);
 	}
 
-	 public String getWord() {
+	/**
+	 * Retorna la palabra como String
+	 * @return Palabra del envoltorio como String 
+	 */
+	public String getWord() {
 		return word;
 	}
 
+	/**
+	 * Establece el envoltorio con una palabra
+	 * @param word  String con el cual establecer el envoltorio
+	 */
 	public void setWord(String word) {
 		this.word = word;
 	}
 
+	/**
+	 * Retorna el código hash de una palabra  
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -29,6 +50,10 @@ public class Word {
 		return result;
 	}
 
+	
+	/**
+	 * Comprueba si una palabra es identica a otra
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

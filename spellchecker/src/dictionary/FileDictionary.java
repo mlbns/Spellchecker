@@ -4,18 +4,40 @@ import java.util.List;
 
 import word.*;
 
+/**
+ * 
+ * FileDictionary: clase encargada de gestionar los diccionarios
+ * 
+ *  @autor Bonader, Nicolás - neb0113@famaf.unc.edu.ar
+ *  @autor Bonias, Melisa - mel.bonias@gmail.com
+ *
+ */
 public class FileDictionary extends Dictionary {
-	
+
+	/**
+	 * Ruta del diccionario original 
+	 */
 	private String filePath;  
 
+	/**
+	 * Construye el diccionario
+	 */
 	public FileDictionary() {
-		load("dict.txt");
 	}
 
+	/**
+	 * Construye el diccionario y lo inicializa cargando las palabras
+	 * desde el archivo en la ruta str 
+	 * @param str  Ruta del diccionario a cargar
+	 */
 	public FileDictionary(String str) {
 		load(str);
 	}
-	
+
+	/**
+	 * Carga el diccionario desde el archivo en la ruta str 
+	 * @param path Ruta del diccionario a cargar
+	 */
 	public void load(String path) {
 		String line;
 		
